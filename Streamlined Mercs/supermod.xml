@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<mod name="Streamlined Mercs">
+	<hooks script_path="mod.lua">
+		<post hook_id="core/lib/managers/coreenvironmentcontrollermanager"/>
+		<post hook_id="lib/tweak_data/charactertweakdata"/>
+	</hooks>
+
+	<assets base_path="assets/">
+		<group name="units/pd2_dlc_mad/characters/" dyn_package="false" target="scripted" load_group="main">
+			<group :name="ene_akan_cs_heavy_ak47_ass/">
+				<file :name="ene_akan_cs_heavy_ak47_ass.model"/>
+				<file :name="ene_akan_cs_heavy_ak47_ass.object"/>
+				<file :name="ene_akan_cs_heavy_ak47_ass.unit"/>
+				<file :name="ene_akan_cs_heavy_ak47_ass_husk.unit"/>
+			</group>
+
+			<group :name="ene_akan_cs_heavy_r870/">
+				<file :name="ene_akan_cs_heavy_r870.unit"/>
+				<file :name="ene_akan_cs_heavy_r870_husk.unit"/>
+			</group>
+
+			<file :name="ene_akan_fbi_swat_dw_ak47_ass/ene_akan_fbi_swat_dw_ak47_ass.unit"/>
+			<file :name="ene_akan_fbi_swat_dw_ak47_ass/ene_akan_fbi_swat_dw_ak47_ass_husk.unit"/>
+
+			<file :name="ene_akan_fbi_swat_dw_r870/ene_akan_fbi_swat_dw_r870.unit"/>
+			<file :name="ene_akan_fbi_swat_dw_r870/ene_akan_fbi_swat_dw_r870_husk.unit"/>
+
+			<file :name="ene_akan_fbi_swat_r870/ene_akan_fbi_swat_r870.unit"/>
+			<file :name="ene_akan_fbi_swat_r870/ene_akan_fbi_swat_r870_husk.unit"/>
+
+			<group target="scripted" load_group="n_h_light_units">
+				<file :name="ene_akan_cs_shield_c45/ene_akan_cs_shield_c45.unit"/>
+				<file :name="ene_akan_cs_shield_c45/ene_akan_cs_shield_c45_husk.unit"/>
+
+				<file :name="ene_akan_cs_swat_ak47_ass/ene_akan_cs_swat_ak47_ass.unit"/>
+				<file :name="ene_akan_cs_swat_ak47_ass/ene_akan_cs_swat_ak47_ass_husk.unit"/>
+
+				<file :name="ene_akan_cs_swat_r870/ene_akan_cs_swat_r870.unit"/>
+				<file :name="ene_akan_cs_swat_r870/ene_akan_cs_swat_r870_husk.unit"/>
+			</group>
+		</group>
+	</assets>
+</mod>

@@ -1,0 +1,10 @@
+April 28, 2023 @ 22:00 UTC-6
+- Add missing units to character map
+- Clean up files a bit
+
+April 20, 2023
+- Add swap for basic-tier Shield
+
+March 31, 2023
+- Change some back end stuff
+- Add setting to disable tweaks for SWAT-tier light units
