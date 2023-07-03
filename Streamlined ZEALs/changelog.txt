@@ -1,3 +1,6 @@
+July 2, 2023 @ 23:10 UTC-6
+- Change ZEAL Medic setting to a multi-select that allows only having ZEAL Medics; this update will reset your previously saved ZEAL Medic setting state
+
 April 28, 2023 @ 22:00 UTC-6
 - Small code change and version bump
 

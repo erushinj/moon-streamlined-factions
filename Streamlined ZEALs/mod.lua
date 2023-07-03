@@ -4,15 +4,30 @@ if not StreamZEALs then
 		mod_instance = ModInstance,
 		save_path = SavePath .. "streamlined_zeals.json",
 		settings = {
-			zeal_medic = true
-		}
+			zeal_medics = 2,
+		},
+		values = {
+			zeal_medics = {
+				"stream_zeals_zeal_medics_disabled",
+				"stream_zeals_zeal_medics_enabled",
+				"stream_zeals_zeal_medics_only",
+			},
+		},
 	}
+
+	function StreamZEALs:zeal_medics()
+		return self.values.zeal_medics[self.settings.zeal_medics]:gsub("^stream_zeals_zeal_medics_", "")
+	end
 
 	Hooks:Add( "LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedZEALs", function(loc)
 		loc:add_localized_strings({
 			stream_zeals_menu_main = "Streamlined ZEALs",
-			stream_zeals_menu_zeal_medic = "ZEAL Medic",
-			stream_zeals_menu_zeal_medic_desc = "When enabled, dynamically replaces Medic textures with ZEAL variant when playing on Death Sentence difficulty."
+
+			stream_zeals_menu_zeal_medics = "ZEAL Medic",
+			stream_zeals_menu_zeal_medics_desc = "Dynamically replaces Medic textures with ZEAL variant when playing on Death Sentence difficulty. Switching setting requires full game restart.",
+			stream_zeals_zeal_medics_disabled = "Disabled",
+			stream_zeals_zeal_medics_enabled = "Enabled",
+			stream_zeals_zeal_medics_only = "ZEAL Medic Only",
 		})
 	end )
 
@@ -25,17 +40,22 @@ if not StreamZEALs then
 			StreamZEALs.settings[item:name()] = (item:value() == "on")
 		end
 
+		MenuCallbackHandler.stream_zeals_setting_value = function(self, item)
+			StreamZEALs.settings[item:name()] = item:value()
+		end
+
 		MenuCallbackHandler.stream_zeals_save = function()
 			io.save_as_json(StreamZEALs.settings, StreamZEALs.save_path)
 		end
 
-		MenuHelper:AddToggle({
-			id = "zeal_medic",
-			title = "stream_zeals_menu_zeal_medic",
-			desc = "stream_zeals_menu_zeal_medic_desc",
-			callback = "stream_zeals_setting_toggle",
-			value = StreamZEALs.settings.zeal_medic,
-			menu_id = menu_id
+		MenuHelper:AddMultipleChoice({
+			id = "zeal_medics",
+			title = "stream_zeals_menu_zeal_medics",
+			desc = "stream_zeals_menu_zeal_medics_desc",
+			callback = "stream_zeals_setting_value",
+			value = StreamZEALs.settings.zeal_medics,
+			items = StreamZEALs.values.zeal_medics,
+			menu_id = menu_id,
 		})
 
 		nodes[menu_id] = MenuHelper:BuildMenu(menu_id, { back_callback = "stream_zeals_save" })
@@ -71,11 +91,19 @@ if not StreamZEALs then
 		end
 
 		StreamZEALs.mod_instance.supermod:GetAssetLoader():LoadAssetGroup("main")
+
+		if StreamZEALs:zeal_medics() ~= "only" then
+			StreamZEALs.mod_instance.supermod:GetAssetLoader():LoadAssetGroup("not_zeal_medics_only")
+		end
 	end
 
 end
 
 if StreamHeist then
+	return
+end
+
+if StreamZEALs:zeal_medics() == "disabled" then
 	return
 end
 
