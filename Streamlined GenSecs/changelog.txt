@@ -1,0 +1,7 @@
+April 28, 2023 @ 22:00 UTC-6
+- Add missing units to character map
+
+March 31, 2023
+- Change some back end stuff
+- Merge Shield-only standalone into the main mod, as a setting
+- Shield-only setting keeps using UMP GenSec model rather than swapping back to the G36 GenSec model
