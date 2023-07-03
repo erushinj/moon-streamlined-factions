@@ -1,0 +1,21 @@
+April 28, 2023 @ 22:00 UTC-6
+- Change mod priority back to 0
+- Add missing units to character map
+
+April 27, 2023 @ 10:15 UTC-6
+- Fix a bug that caused the model changes to be disabled when using SH's GenSec faction tweaks
+- Change mod priority to -1
+
+April 26, 2023 @ 13:00 UTC-6
+- Add Federales Medic
+- Re-fix husk units
+- Change some more back end stuff
+
+March 31, 2023
+- Change some back end stuff
+- Merge Shield-only standalone into the main mod, as a setting
+- Fix an error in the supermod
+
+March 26, 2023
+- Added second file with only the shield model
+- Reduced mod icon size
