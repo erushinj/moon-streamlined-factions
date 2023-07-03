@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<mod name="Streamlined Murkies">
+	<hooks>
+		<post script_path="mod.lua" hook_id="core/lib/managers/coreenvironmentcontrollermanager"/>
+	</hooks>
+
+	<assets base_path="assets/">
+		<group dyn_package="false" target="scripted" load_group="main">
+			<group name="units/pd2_dlc_bph/characters/">
+				<file :name="ene_murkywater_heavy/ene_murkywater_heavy.object"/>
+
+				<file :name="ene_murkywater_heavy_g36/ene_murkywater_heavy_g36.unit"/>
+				<file :name="ene_murkywater_heavy_g36/ene_murkywater_heavy_g36_husk.unit"/>
+
+				<group :name="ene_murkywater_heavy_shotgun/">
+					<file :name="ene_murkywater_heavy_shotgun.material_config"/>
+					<!-- <file :name="ene_murkywater_heavy_shotgun.model"/> -->
+					<file :name="ene_murkywater_heavy_shotgun.object"/>
+					<file :name="ene_murkywater_heavy_shotgun.unit"/>
+					<file :name="ene_murkywater_heavy_shotgun_contour.material_config"/>
+					<file :name="ene_murkywater_heavy_shotgun_husk.unit"/>
+				</group>
+
+				<group :name="ene_murkywater_light/">
+					<file :name="ene_murkywater_light.material_config"/>
+					<file :name="ene_murkywater_light.model"/>
+					<file :name="ene_murkywater_light.object"/>
+					<file :name="ene_murkywater_light_contour.material_config"/>
+				</group>
+
+				<file :name="ene_murkywater_light_city/ene_murkywater_light_city.unit"/>
+				<file :name="ene_murkywater_light_city/ene_murkywater_light_city_husk.unit"/>
+
+				<file :name="ene_murkywater_light_city_r870/ene_murkywater_light_city_r870.unit"/>
+				<file :name="ene_murkywater_light_city_r870/ene_murkywater_light_city_r870_husk.unit"/>
+
+				<file :name="ene_murkywater_light_fbi/ene_murkywater_light_fbi.unit"/>
+				<file :name="ene_murkywater_light_fbi/ene_murkywater_light_fbi_husk.unit"/>
+
+				<file :name="ene_murkywater_light_fbi_r870/ene_murkywater_light_fbi_r870.unit"/>
+				<file :name="ene_murkywater_light_fbi_r870/ene_murkywater_light_fbi_r870_husk.unit"/>
+
+				<group :name="ene_murkywater_light_r870/">
+					<file :name="ene_murkywater_light_r870.cooked_physics"/>
+					<file :name="ene_murkywater_light_r870.unit"/>
+					<file :name="ene_murkywater_light_r870.model"/>
+					<file :name="ene_murkywater_light_r870.object"/>
+					<file :name="ene_murkywater_light_r870_husk.unit"/>
+				</group>
+				<group :name="ene_murkywater_shield/">
+					<file :name="ene_murkywater_shield.cooked_physics"/>
+					<file :name="ene_murkywater_shield.unit"/>
+					<file :name="ene_murkywater_shield.model"/>
+					<file :name="ene_murkywater_shield.object"/>
+					<file :name="ene_murkywater_shield_husk.unit"/>
+				</group>
+			</group>
+
+			<group :base_path="fixed_body_armour/" name="units/pd2_dlc_bph/characters/" load_group="fixed_body_armour">
+				<file :name="ene_murkywater_heavy/ene_murkywater_heavy.model"/>
+				<file :name="ene_murkywater_heavy/ene_murkywater_heavy.unit"/>
+				<file :name="ene_murkywater_heavy/ene_murkywater_heavy_husk.unit"/>
+
+				<file :name="ene_murkywater_heavy_shotgun/ene_murkywater_heavy_shotgun.model"/>
+			</group>
+
+			<group :base_path="not_fixed_body_armour/" name="units/pd2_dlc_bph/characters/" load_group="not_fixed_body_armour">
+				<file :name="ene_murkywater_heavy_shotgun/ene_murkywater_heavy_shotgun.model"/>
+			</group>
+		</group>
+	</assets>
+</mod>
