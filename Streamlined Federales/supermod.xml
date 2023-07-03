@@ -14,8 +14,17 @@
 					<file :name="ene_acc_policia_federale_helmet.object"/>
 				</group>
 
-				<file :name="ene_acc_swat_medic_policia_federale_helmet/ene_acc_swat_medic_policia_federale_helmet.material_config"/>
-				<file :name="ene_acc_swat_medic_policia_federale_helmet/ene_acc_swat_medic_policia_federale_helmet.model"/>
+				<group :name="ene_acc_swat_medic_policia_federale_helmet/">
+					<file :name="ene_acc_swat_medic_policia_federale_helmet.material_config"/>
+					<file :name="ene_acc_swat_medic_policia_federale_helmet.model"/>
+					<file :name="ene_acc_swat_medic_policia_federale_helmet.object"/>
+				</group>
+
+				<group :name="ene_acc_tazer_policia_federale_helmet/">
+					<file :name="ene_acc_tazer_policia_federale_helmet.material_config"/>
+					<file :name="ene_acc_tazer_policia_federale_helmet.model"/>
+					<file :name="ene_acc_tazer_policia_federale_helmet.object"/>
+				</group>
 
 				<group :name="ene_swat_heavy_policia_federale/">
 					<file :name="ene_swat_heavy_policia_federale.model"/>
@@ -104,6 +113,13 @@
 				<file :name="ene_swat_shield_policia_federale_mp9/ene_swat_shield_policia_federale_mp9.unit"/>
 				<file :name="ene_swat_shield_policia_federale_mp9/ene_swat_shield_policia_federale_mp9_husk.unit"/>
 
+				<group :name="ene_swat_tazer_policia_federale/">
+					<file :name="ene_swat_tazer_policia_federale.material_config"/>
+					<file :name="ene_swat_tazer_policia_federale.model"/>
+					<file :name="ene_swat_tazer_policia_federale.object"/>
+					<file :name="ene_swat_tazer_policia_federale_contour.material_config"/>
+				</group>
+
 				<group :name="shared_textures/">
 					<file :name="heads_atlas_df.texture"/>
 					<file :name="helmets_atlas_df.texture"/>
@@ -111,6 +127,9 @@
 					<file :name="medic_head_df.texture"/>
 					<file :name="medic_head_nm.texture"/>
 					<file :name="swat_body_df.texture"/>
+					<file :name="taser_body_df.texture"/>
+					<file :name="taser_helmet_df.texture"/>
+					<file :name="taser_helmet_nm.texture"/>
 				</group>
 			</group>
 
@@ -125,9 +144,6 @@
 				<file :name="ene_acc_shield_lights_df.texture"/>
 				<file :name="ene_acc_shield_lights_nm.texture"/>
 				<file :name="ene_acc_shield_lights_op.texture"/>
-				<file :name="shield_lights_df.texture"/>
-				<file :name="shield_lights_nm.texture"/>
-				<file :name="shield_lights_op.texture"/>
 			</group>
 		</group>
 	</assets>

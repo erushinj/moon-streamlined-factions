@@ -1,3 +1,10 @@
+July 2, 2023 @ 22:20 UTC-6
+- Update to match SH v4.7.5
+- Add Federales Taser
+- Fix faulty heavy body armour
+- Fix Federales Medic's popped helmet orientation
+- Improve shield opacity texture
+
 April 28, 2023 @ 22:00 UTC-6
 - Change mod priority back to 0
 - Add missing units to character map
