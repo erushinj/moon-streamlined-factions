@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<mod name="Streamlined FBIs">
+	<hooks script_path="mod.lua">
+		<post hook_id="core/lib/managers/coreenvironmentcontrollermanager"/>
+		<post hook_id="lib/tweak_data/charactertweakdata"/>
+	</hooks>
+
+	<assets base_path="assets/">
+		<group name="units/payday2/characters/" dyn_package="false" target="scripted" load_group="main">
+			<group :name="ene_fbi_heavy_r870/">
+				<file :name="ene_fbi_heavy_r870.cooked_physics"/>
+				<file :name="ene_fbi_heavy_r870.material_config"/>
+				<file :name="ene_fbi_heavy_r870.model"/>
+				<file :name="ene_fbi_heavy_r870.object"/>
+				<file :name="ene_fbi_heavy_r870.unit"/>
+				<file :name="ene_fbi_heavy_r870_contour.material_config"/>
+				<file :name="ene_fbi_heavy_r870_husk.unit"/>
+			</group>
+
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.model"/>
+
+			<file :name="ene_fbi_swat_2/ene_fbi_swat_2.model"/>
+
+			<file :name="ene_shield_1/ene_shield_1.model"/>
+		</group>
+	</assets>
+</mod>
