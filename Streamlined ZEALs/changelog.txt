@@ -1,0 +1,11 @@
+April 28, 2023 @ 22:00 UTC-6
+- Small code change and version bump
+
+April 26, 2023 @ 13:00 UTC-6
+- ZEAL shield will no longer have a faint green glow across the entire model
+
+April 15, 2023
+- Add ZEAL Medic texture swap as a setting
+
+March 31, 2023
+- Change some back end stuff
