@@ -1,17 +1,17 @@
 if not StreamZEALs then
 
-	StreamZEALs = {
-		mod_instance = ModInstance,
-		save_path = SavePath .. "streamlined_zeals.json",
-		settings = {
-			zeal_medics = 2,
-		},
-		values = {
-			zeal_medics = {
-				"stream_zeals_zeal_medics_disabled",
-				"stream_zeals_zeal_medics_enabled",
-				"stream_zeals_zeal_medics_only",
-			},
+	Global.streamlined_factions = Global.streamlined_factions or {}
+
+	StreamZEALs = ModInstance
+	StreamZEALs.save_path = SavePath .. "streamlined_zeals.json"
+	StreamZEALs.settings = {
+		zeal_medics = 2,
+	}
+	StreamZEALs.values = {
+		zeal_medics = {
+			"stream_zeals_zeal_medics_disabled",
+			"stream_zeals_zeal_medics_enabled",
+			"stream_zeals_zeal_medics_only",
 		},
 	}
 
@@ -22,7 +22,6 @@ if not StreamZEALs then
 	Hooks:Add( "LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedZEALs", function(loc)
 		loc:add_localized_strings({
 			stream_zeals_menu_main = "Streamlined ZEALs",
-
 			stream_zeals_menu_zeal_medics = "ZEAL Medic",
 			stream_zeals_menu_zeal_medics_desc = "Dynamically replaces Medic textures with ZEAL variant when playing on Death Sentence difficulty. Switching setting requires full game restart.",
 			stream_zeals_zeal_medics_disabled = "Disabled",
@@ -36,15 +35,15 @@ if not StreamZEALs then
 		local menu_id = "stream_zeals_menu"
 		MenuHelper:NewMenu(menu_id)
 
-		MenuCallbackHandler.stream_zeals_setting_toggle = function(self, item)
+		function MenuCallbackHandler:stream_zeals_setting_toggle(item)
 			StreamZEALs.settings[item:name()] = (item:value() == "on")
 		end
 
-		MenuCallbackHandler.stream_zeals_setting_value = function(self, item)
+		function MenuCallbackHandler:stream_zeals_setting_value(item)
 			StreamZEALs.settings[item:name()] = item:value()
 		end
 
-		MenuCallbackHandler.stream_zeals_save = function()
+		function MenuCallbackHandler:stream_zeals_save()
 			io.save_as_json(StreamZEALs.settings, StreamZEALs.save_path)
 		end
 
@@ -83,44 +82,46 @@ if not StreamZEALs then
 	end
 
 	-- Check faction tweaks
-	if not Global.stream_zeals_check then
-		Global.stream_zeals_check = true
+	if not Global.streamlined_factions.checked_zeals then
+		Global.streamlined_factions.checked_zeals = true
 
-		if StreamHeist and StreamHeist.settings.faction_tweaks.zeal then
+		local sh = StreamHeist
+		if sh and sh.settings and sh.settings.faction_tweaks and sh.settings.faction_tweaks.zeal then
 			return
 		end
 
-		StreamZEALs.mod_instance.supermod:GetAssetLoader():LoadAssetGroup("main")
+		local asset_loader = StreamZEALs:GetSuperMod():GetAssetLoader()
+
+		asset_loader:LoadAssetGroup("main")
 
 		if StreamZEALs:zeal_medics() ~= "only" then
-			StreamZEALs.mod_instance.supermod:GetAssetLoader():LoadAssetGroup("not_zeal_medics_only")
+			asset_loader:LoadAssetGroup("not_zeal_medics_only")
 		end
 	end
 
 end
 
-if StreamHeist then
+local sh_instance = BLT.Mods:GetModByName("Streamlined Heisting")
+if sh_instance and sh_instance:IsEnabled() and sh_instance:WasEnabledAtStart() then
 	return
 end
 
-if StreamZEALs:zeal_medics() == "disabled" then
+local eclipse = BLT.Mods:GetModByName("Eclipse")
+if eclipse and eclipse:IsEnabled() and eclipse:WasEnabledAtStart() and EclipseDebug then
 	return
 end
 
 if RequiredScript == "lib/units/enemies/cop/copbase" then
-	local is_sm_wish = Global.game_settings and Global.game_settings.difficulty == "sm_wish"
+	local zeal_switch = StreamZEALs:zeal_medics() ~= "disabled" and Global.game_settings and Global.game_settings.difficulty == "sm_wish"
 
-	local head_df = is_sm_wish and Idstring("units/payday2/characters/shared_textures/zeal_medic_head_df")
-	or Idstring("units/payday2/characters/shared_textures/ene_medic_head_df")
-
-	local body_df = is_sm_wish and Idstring("units/payday2/characters/shared_textures/zeal_medic_df")
-	or Idstring("units/payday2/characters/shared_textures/ene_medic_df")
+	local head_df = zeal_switch and Idstring("units/payday2/characters/shared_textures/zeal_medic_head_df") or Idstring("units/payday2/characters/shared_textures/ene_medic_head_df")
+	local body_df = zeal_switch and Idstring("units/payday2/characters/shared_textures/zeal_medic_df") or Idstring("units/payday2/characters/shared_textures/ene_medic_df")
 
 	local medic_head = {
-		diffuse_texture = head_df
+		diffuse_texture = head_df,
 	}
 	local medic_body = {
-		diffuse_texture = body_df
+		diffuse_texture = body_df,
 	}
 
 	local medic_materials = {
@@ -132,7 +133,7 @@ if RequiredScript == "lib/units/enemies/cop/copbase" then
 
 	local unit_data = {
 		["units/payday2/characters/ene_medic_m4/ene_medic_m4"] = medic_materials,
-		["units/payday2/characters/ene_medic_r870/ene_medic_r870"] = medic_materials
+		["units/payday2/characters/ene_medic_r870/ene_medic_r870"] = medic_materials,
 	}
 
 	local zeal_materials = {}
@@ -177,11 +178,11 @@ if RequiredScript == "lib/units/enemies/cop/copbase" then
 		zeal_materials_applied[mat_config_key] = materials
 	end
 
-	Hooks:PostHook(CopBase, "on_material_applied", "stream_zeals_on_material_applied", function(self)
+	Hooks:PostHook( CopBase, "on_material_applied", "streamlined_zeals_on_material_applied", function(self)
 		chk_apply_zeal_medic_material(self, true)
-	end)
+	end )
 
-	Hooks:PostHook(CopBase, "init", "stream_zeals_init", function(self)
+	Hooks:PostHook( CopBase, "init", "streamlined_zeals_init", function(self)
 		chk_apply_zeal_medic_material(self, false)
-	end)
+	end )
 end
