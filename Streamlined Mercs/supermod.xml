@@ -19,6 +19,8 @@
 				<file :name="ene_akan_cs_heavy_r870_husk.unit"/>
 			</group>
 
+			<file :name="ene_akan_fbi_heavy_g36/ene_akan_fbi_heavy_g36.object"/>
+
 			<file :name="ene_akan_fbi_swat_dw_ak47_ass/ene_akan_fbi_swat_dw_ak47_ass.unit"/>
 			<file :name="ene_akan_fbi_swat_dw_ak47_ass/ene_akan_fbi_swat_dw_ak47_ass_husk.unit"/>
 

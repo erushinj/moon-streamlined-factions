@@ -3,8 +3,8 @@
 	"name" : "Streamlined Mercs",
 	"description" : "Ports Streamlined Heisting's drastically improved Russian mercenary units to vanilla",
 	"author" : "Hoppip, made standalone by moon",
-	"contact" : "https://modworkshop.net/user/55749",
-	"version" : "4.7.1",
+	"contact" : "https://modworkshop.net/mod/41725",
+	"version" : "4.8.1",
 	"color" : "0.043 0.808 0.6",
 	"image" : "mod.png"
 

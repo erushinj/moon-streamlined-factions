@@ -1,18 +1,18 @@
 if not StreamMercs then
 
-	StreamMercs = {
-		mod_instance = ModInstance,
-		save_path = SavePath .. "streamlined_mercs.json",
-		settings = {
-			n_h_light_units = true
-		}
+	Global.streamlined_factions = Global.streamlined_factions or {}
+
+	StreamMercs = ModInstance
+	StreamMercs.save_path = SavePath .. "streamlined_mercs.json"
+	StreamMercs.settings = {
+		n_h_light_units = true,
 	}
 
 	Hooks:Add( "LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedMercs", function(loc)
 		loc:add_localized_strings({
 			stream_mercs_menu_main = "Streamlined Mercs",
 			stream_mercs_menu_n_h_light_units = "Change Normal/Hard Light Units",
-			stream_mercs_menu_n_h_light_units_desc = "When disabled, keeps the light and Shield units seen on Normal and Hard the same as vanilla. Use when playing with a mod that adds them to other difficulties. Requires full game restart."
+			stream_mercs_menu_n_h_light_units_desc = "When disabled, keeps the light and Shield units seen on Normal and Hard the same as vanilla. Use when playing with a mod that adds them to other difficulties. Requires full game restart.",
 		})
 	end )
 
@@ -21,11 +21,11 @@ if not StreamMercs then
 		local menu_id = "stream_mercs_menu"
 		MenuHelper:NewMenu(menu_id)
 
-		MenuCallbackHandler.stream_mercs_setting_toggle = function(self, item)
+		function MenuCallbackHandler:stream_mercs_setting_toggle(item)
 			StreamMercs.settings[item:name()] = (item:value() == "on")
 		end
 
-		MenuCallbackHandler.stream_mercs_save = function()
+		function MenuCallbackHandler:stream_mercs_save()
 			io.save_as_json(StreamMercs.settings, StreamMercs.save_path)
 		end
 
@@ -35,7 +35,7 @@ if not StreamMercs then
 			desc = "stream_mercs_menu_n_h_light_units_desc",
 			callback = "stream_mercs_setting_toggle",
 			value = StreamMercs.settings.n_h_light_units,
-			menu_id = menu_id
+			menu_id = menu_id,
 		})
 
 		nodes[menu_id] = MenuHelper:BuildMenu(menu_id, { back_callback = "stream_mercs_save" })
@@ -63,14 +63,15 @@ if not StreamMercs then
 	end
 
 	-- Check faction tweaks
-	if not Global.stream_mercs_check then
-		Global.stream_mercs_check = true
+	if not Global.streamlined_factions.checked_mercs then
+		Global.streamlined_factions.checked_mercs = true
 
-		if StreamHeist and StreamHeist.settings.faction_tweaks.russia then
+		local sh = StreamHeist
+		if sh and sh.settings and sh.settings.faction_tweaks and sh.settings.faction_tweaks.russia then
 			return
 		end
 
-		local asset_loader = StreamMercs.mod_instance.supermod:GetAssetLoader()
+		local asset_loader = StreamMercs:GetSuperMod():GetAssetLoader()
 
 		asset_loader:LoadAssetGroup("main")
 
@@ -83,19 +84,20 @@ end
 
 if RequiredScript == "lib/tweak_data/charactertweakdata" then
 	-- Custom maps often break the character_map, need to be safe when adding to it
-	local logged_error
 	local function safe_add(char_map_table, element)
 		if not char_map_table or not char_map_table.list then
-			if not logged_error then
-				logged_error = true
+			if not Global.streamlined_factions.logged_error then
+				Global.streamlined_factions.logged_error = true
 
-				log("[Streamlined Mercs] WARNING: CharacterTweakData:character_map has missing data! One of your mods uses outdated code, check for mods overriding this function!")
+				log("[Streamlined Factions] WARNING: CharacterTweakData:character_map has missing data! One of your mods uses outdated code, check for mods overriding this function!")
 			end
 
 			return
 		end
 
-		table.insert(char_map_table.list, element)
+		if not table.contains(char_map_table.list, element) then
+			table.insert(char_map_table.list, element)
+		end
 	end
 
 	Hooks:PostHook( CharacterTweakData, "character_map", "streamlined_mercs_character_map", function(self)
