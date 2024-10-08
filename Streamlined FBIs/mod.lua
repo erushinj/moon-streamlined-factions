@@ -1,37 +1,39 @@
 if not StreamFBIs then
 
-	StreamFBIs = {
-		mod_instance = ModInstance
-	}
+	Global.streamlined_factions = Global.streamlined_factions or {}
+
+	StreamFBIs = ModInstance
 
 	-- Check faction tweaks
-	if not Global.stream_fbis_check then
-		Global.stream_fbis_check = true
+	if not Global.streamlined_factions.checked_fbis then
+		Global.streamlined_factions.checked_fbis = true
 
-		if StreamHeist and StreamHeist.settings.faction_tweaks.fbi then
+		local sh = StreamHeist
+		if sh and sh.settings and sh.settings.faction_tweaks and sh.settings.faction_tweaks.fbi then
 			return
 		end
 
-		StreamFBIs.mod_instance.supermod:GetAssetLoader():LoadAssetGroup("main")
+		StreamFBIs:GetSuperMod():GetAssetLoader():LoadAssetGroup("main")
 	end
 
 end
 
 if RequiredScript == "lib/tweak_data/charactertweakdata" then
 	-- Custom maps often break the character_map, need to be safe when adding to it
-	local logged_error
 	local function safe_add(char_map_table, element)
 		if not char_map_table or not char_map_table.list then
-			if not logged_error then
-				logged_error = true
+			if not Global.streamlined_factions.logged_error then
+				Global.streamlined_factions.logged_error = true
 
-				log("[Streamlined FBIs] WARNING: CharacterTweakData:character_map has missing data! One of your mods uses outdated code, check for mods overriding this function!")
+				log("[Streamlined Factions] WARNING: CharacterTweakData:character_map has missing data! One of your mods uses outdated code, check for mods overriding this function!")
 			end
 
 			return
 		end
 
-		table.insert(char_map_table.list, element)
+		if not table.contains(char_map_table.list, element) then
+			table.insert(char_map_table.list, element)
+		end
 	end
 
 	Hooks:PostHook( CharacterTweakData, "character_map", "streamlined_fbis_character_map", function(self)
