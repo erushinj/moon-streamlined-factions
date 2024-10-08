@@ -3,8 +3,8 @@
 	"name" : "Streamlined GenSecs",
 	"description" : "Ports Streamlined Heisting's drastically improved GenSec units to vanilla",
 	"author" : "Hoppip, made standalone by moon",
-	"contact" : "https://modworkshop.net/user/55749",
-	"version" : "4.7.5",
+	"contact" : "https://modworkshop.net/mod/41712",
+	"version" : "4.8.1",
 	"color" : "0.043 0.808 0.6",
 	"image" : "mod.png"
 
