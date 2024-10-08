@@ -1,11 +1,11 @@
 if not StreamFederales then
 
-	StreamFederales = {
-		mod_instance = ModInstance,
-		save_path = SavePath .. "streamlined_federales.json",
-		settings = {
-			shields_only = false
-		}
+	Global.streamlined_factions = Global.streamlined_factions or {}
+
+	StreamFederales = ModInstance
+	StreamFederales.save_path = SavePath .. "streamlined_federales.json"
+	StreamFederales.settings = {
+		shields_only = false,
 	}
 
 	Hooks:Add( "LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedFederales", function(loc)
@@ -13,7 +13,7 @@ if not StreamFederales then
 			stream_federales_menu_main = "Streamlined Federales",
 			stream_federales_menu_main_desc = "Settings require a full game restart to take effect after toggling.",
 			stream_federales_menu_shields_only = "Shields Only",
-			stream_federales_menu_shields_only_desc = "When enabled, adds only the new Policia Federal shield model. Use when playing with another mod that remodels Federales. Requires full game restart."
+			stream_federales_menu_shields_only_desc = "When enabled, adds only the new Policia Federal shield model. Use when playing with another mod that remodels Federales. Requires full game restart.",
 		})
 	end )
 
@@ -22,11 +22,11 @@ if not StreamFederales then
 		local menu_id = "stream_federales_menu"
 		MenuHelper:NewMenu(menu_id)
 
-		MenuCallbackHandler.stream_federales_setting_toggle = function(self, item)
+		function MenuCallbackHandler:stream_federales_setting_toggle(item)
 			StreamFederales.settings[item:name()] = (item:value() == "on")
 		end
 
-		MenuCallbackHandler.stream_federales_save = function()
+		function MenuCallbackHandler:stream_federales_save()
 			io.save_as_json(StreamFederales.settings, StreamFederales.save_path)
 		end
 
@@ -36,7 +36,7 @@ if not StreamFederales then
 			desc = "stream_federales_menu_shields_only_desc",
 			callback = "stream_federales_setting_toggle",
 			value = StreamFederales.settings.shields_only,
-			menu_id = menu_id
+			menu_id = menu_id,
 		})
 
 		nodes[menu_id] = MenuHelper:BuildMenu(menu_id, { back_callback = "stream_federales_save" })
@@ -64,14 +64,15 @@ if not StreamFederales then
 	end
 
 	-- Check faction tweaks
-	if not Global.stream_federales_check then
-		Global.stream_federales_check = true
+	if not Global.streamlined_factions.checked_federales then
+		Global.streamlined_factions.checked_federales = true
 
-		if StreamHeist and StreamHeist.settings.faction_tweaks.federales then
+		local sh = StreamHeist
+		if sh and sh.settings and sh.settings.faction_tweaks and sh.settings.faction_tweaks.federales then
 			return
 		end
 
-		local asset_loader = StreamFederales.mod_instance.supermod:GetAssetLoader()
+		local asset_loader = StreamFederales:GetSuperMod():GetAssetLoader()
 
 		asset_loader:LoadAssetGroup("main")
 
@@ -84,19 +85,20 @@ end
 
 if RequiredScript == "lib/tweak_data/charactertweakdata" then
 	-- Custom maps often break the character_map, need to be safe when adding to it
-	local logged_error
 	local function safe_add(char_map_table, element)
 		if not char_map_table or not char_map_table.list then
-			if not logged_error then
-				logged_error = true
+			if not Global.streamlined_factions.logged_error then
+				Global.streamlined_factions.logged_error = true
 
-				log("[Streamlined Federales] WARNING: CharacterTweakData:character_map has missing data! One of your mods uses outdated code, check for mods overriding this function!")
+				log("[Streamlined Factions] WARNING: CharacterTweakData:character_map has missing data! One of your mods uses outdated code, check for mods overriding this function!")
 			end
 
 			return
 		end
 
-		table.insert(char_map_table.list, element)
+		if not table.contains(char_map_table.list, element) then
+			table.insert(char_map_table.list, element)
+		end
 	end
 
 	Hooks:PostHook( CharacterTweakData, "character_map", "streamlined_federales_character_map", function(self)

@@ -107,8 +107,12 @@
 					<file :name="ene_swat_policia_sniper_contour.material_config"/>
 				</group>
 
-				<file :name="ene_swat_shield_policia_federale_c45/ene_swat_shield_policia_federale_c45.model"/>
-				<file :name="ene_swat_shield_policia_federale_c45/ene_swat_shield_policia_federale_c45.object"/>
+				<group :name="ene_swat_shield_policia_federale_c45/">
+					<file :name="ene_swat_shield_policia_federale_c45.model"/>
+					<file :name="ene_swat_shield_policia_federale_c45.object"/>
+					<file :name="ene_swat_shield_policia_federale_c45.unit"/>
+					<file :name="ene_swat_shield_policia_federale_c45_husk.unit"/>
+				</group>
 
 				<file :name="ene_swat_shield_policia_federale_mp9/ene_swat_shield_policia_federale_mp9.unit"/>
 				<file :name="ene_swat_shield_policia_federale_mp9/ene_swat_shield_policia_federale_mp9_husk.unit"/>

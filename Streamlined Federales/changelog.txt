@@ -1,3 +1,11 @@
+December 5, 2023 @ 00:00 UTC-6
+- Update for U240.3
+- Update to match SH v4.8.1
+- Adjusted pouches on Federales Heavies
+- Fix pistol Federales Shield popped helmet
+- No longer add duplicate entries to character map if they already exist
+- Shouldn't produce errors on startup when playing with Eclipse anymore
+
 July 2, 2023 @ 22:20 UTC-6
 - Update to match SH v4.7.5
 - Add Federales Taser
