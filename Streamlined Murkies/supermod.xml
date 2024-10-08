@@ -7,17 +7,16 @@
 	<assets base_path="assets/">
 		<group dyn_package="false" target="scripted" load_group="main">
 			<group name="units/pd2_dlc_bph/characters/">
+				<file :name="ene_murkywater_heavy/ene_murkywater_heavy.material_config"/>
 				<file :name="ene_murkywater_heavy/ene_murkywater_heavy.object"/>
+				<file :name="ene_murkywater_heavy/ene_murkywater_heavy_contour.material_config"/>
 
 				<file :name="ene_murkywater_heavy_g36/ene_murkywater_heavy_g36.unit"/>
 				<file :name="ene_murkywater_heavy_g36/ene_murkywater_heavy_g36_husk.unit"/>
 
 				<group :name="ene_murkywater_heavy_shotgun/">
-					<file :name="ene_murkywater_heavy_shotgun.material_config"/>
-					<!-- <file :name="ene_murkywater_heavy_shotgun.model"/> -->
 					<file :name="ene_murkywater_heavy_shotgun.object"/>
 					<file :name="ene_murkywater_heavy_shotgun.unit"/>
-					<file :name="ene_murkywater_heavy_shotgun_contour.material_config"/>
 					<file :name="ene_murkywater_heavy_shotgun_husk.unit"/>
 				</group>
 

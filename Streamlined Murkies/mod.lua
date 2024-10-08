@@ -1,11 +1,11 @@
 if not StreamMurkies then
 
-	StreamMurkies = {
-		mod_instance = ModInstance,
-		save_path = SavePath .. "streamlined_murkies.json",
-		settings = {
-			fixed_body_armour = false
-		}
+	Global.streamlined_factions = Global.streamlined_factions or {}
+
+	StreamMurkies = ModInstance
+	StreamMurkies.save_path = SavePath .. "streamlined_murkies.json"
+	StreamMurkies.settings = {
+		fixed_body_armour = true,
 	}
 
 	Hooks:Add( "LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedMurkies", function(loc)
@@ -13,7 +13,7 @@ if not StreamMurkies then
 			stream_murkies_menu_main = "Streamlined Murkies",
 			stream_murkies_menu_main_desc = "Settings require a full game restart to take effect after toggling.",
 			stream_murkies_menu_fixed_body_armour = "Fixed Body Armour",
-			stream_murkies_menu_fixed_body_armour_desc = "When enabled, fixes the backside of Murky heavy units being bulletproof. Requires full game restart."
+			stream_murkies_menu_fixed_body_armour_desc = "When enabled, fixes the backside of Murky heavy units being bulletproof. Requires full game restart.",
 		})
 	end )
 
@@ -22,11 +22,11 @@ if not StreamMurkies then
 		local menu_id = "stream_murkies_menu"
 		MenuHelper:NewMenu(menu_id)
 
-		MenuCallbackHandler.stream_murkies_setting_toggle = function(self, item)
+		function MenuCallbackHandler:stream_murkies_setting_toggle(item)
 			StreamMurkies.settings[item:name()] = (item:value() == "on")
 		end
 
-		MenuCallbackHandler.stream_murkies_save = function()
+		function MenuCallbackHandler:stream_murkies_save()
 			io.save_as_json(StreamMurkies.settings, StreamMurkies.save_path)
 		end
 
@@ -36,7 +36,7 @@ if not StreamMurkies then
 			desc = "stream_murkies_menu_fixed_body_armour_desc",
 			callback = "stream_murkies_setting_toggle",
 			value = StreamMurkies.settings.fixed_body_armour,
-			menu_id = menu_id
+			menu_id = menu_id,
 		})
 
 		nodes[menu_id] = MenuHelper:BuildMenu(menu_id, { back_callback = "stream_murkies_save" })
@@ -64,14 +64,15 @@ if not StreamMurkies then
 	end
 
 	-- Check faction tweaks
-	if not Global.stream_murkies_check then
-		Global.stream_murkies_check = true
+	if not Global.streamlined_factions.checked_murkies then
+		Global.streamlined_factions.checked_murkies = true
 
-		if StreamHeist and StreamHeist.settings.faction_tweaks.murkywater then
+		local sh = StreamHeist
+		if sh and sh.settings and sh.settings.faction_tweaks and sh.settings.faction_tweaks.murkywater then
 			return
 		end
 
-		local asset_loader = StreamMurkies.mod_instance.supermod:GetAssetLoader()
+		local asset_loader = StreamMurkies:GetSuperMod():GetAssetLoader()
 
 		asset_loader:LoadAssetGroup("main")
 
