@@ -1,3 +1,9 @@
+January 5, 2024 @ 15:40 UTC-6
+- Update to match SH v4.8.1
+- Added crotch armour to and fixed helmet normals of SWAT Heavies
+- No longer add duplicate entries to character map if they already exist
+- Shouldn't produce errors on startup when playing with Eclipse anymore
+
 July 2, 2023 @ 22:35 UTC-6
 - Update to match SH v4.7.5
 - Fix faulty heavy body armour (even though it's disabled in this standalone)
