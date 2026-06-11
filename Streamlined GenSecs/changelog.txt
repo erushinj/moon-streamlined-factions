@@ -1,20 +1,25 @@
-October 15, 2024 @ 17:45 UTC-6
+June 10, 2026
+- Update to match SH v4.9.9
+- Slightly adjust GenSec Heavy models
+- Fix seam in GenSec Heavy Helmet
+
+October 15, 2024
 - Update to match SH v4.8.8
 - Tweak GenSec Heavy models
 - Fix GenSec Shield and SMG unit LOD
 - Better future-proof SH compatibility by removing an unnecessary hook
 
-December 5, 2023 @ 00:00 UTC-6
+December 5, 2023
 - Update to match SH v4.8.1
 - Slightly sharpen GenSec Shield texture
 - No longer add duplicate entries to character map if they already exist
 - Shouldn't produce errors on startup when playing with Eclipse anymore
 
-July 2, 2023 @ 22:40 UTC-6
+July 2, 2023
 - Update to match SH v4.7.5
 - Fix inverted GenSec shield normal map
 
-April 28, 2023 @ 22:00 UTC-6
+April 28, 2023
 - Add missing units to character map
 
 March 31, 2023

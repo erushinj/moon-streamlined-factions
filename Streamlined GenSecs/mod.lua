@@ -7,16 +7,16 @@ if not StreamGenSecs then
 		shields_only = false,
 	}
 
-	Hooks:Add( "LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedGenSecs", function(loc)
+	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedGenSecs", function(loc)
 		loc:add_localized_strings({
 			stream_gensecs_menu_main = "Streamlined GenSecs",
 			stream_gensecs_menu_main_desc = "Settings require a full game restart to take effect after toggling.",
 			stream_gensecs_menu_shields_only = "Shields Only",
 			stream_gensecs_menu_shields_only_desc = "When enabled, adds only the new GenSec shield model. Use when playing with another mod that remodels GenSecs. Requires full game restart.",
 		})
-	end )
+	end)
 
-	Hooks:Add( "MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenusStreamlinedGenSecs", function(_, nodes)
+	Hooks:Add("MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenusStreamlinedGenSecs", function(_, nodes)
 		local menu_id = "stream_gensecs_menu"
 		MenuHelper:NewMenu(menu_id)
 
@@ -39,7 +39,7 @@ if not StreamGenSecs then
 
 		nodes[menu_id] = MenuHelper:BuildMenu(menu_id, { back_callback = "stream_gensecs_save" })
 		MenuHelper:AddMenuItem(nodes["blt_options"], menu_id, "stream_gensecs_menu_main")
-	end )
+	end)
 
 	-- Load settings
 	if io.file_is_readable(StreamGenSecs.save_path) then
@@ -98,10 +98,9 @@ if RequiredScript == "lib/tweak_data/charactertweakdata" then
 		end
 	end
 
-	Hooks:PostHook( CharacterTweakData, "character_map", "streamlined_gensecs_character_map", function(self)
+	Hooks:PostHook(CharacterTweakData, "character_map", "streamlined_gensecs_character_map", function()
 		local char_map = Hooks:GetReturn()
-
 		safe_add(char_map.basic, "ene_city_swat_r870")
 		safe_add(char_map.basic, "ene_city_shield")
-	end )
+	end)
 end
