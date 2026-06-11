@@ -1,5 +1,4 @@
 if not StreamMercs then
-
 	Global.streamlined_factions = Global.streamlined_factions or {}
 
 	StreamMercs = ModInstance
@@ -17,7 +16,6 @@ if not StreamMercs then
 	end )
 
 	Hooks:Add( "MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenusStreamlinedMercs", function(_, nodes)
-
 		local menu_id = "stream_mercs_menu"
 		MenuHelper:NewMenu(menu_id)
 
@@ -40,7 +38,6 @@ if not StreamMercs then
 
 		nodes[menu_id] = MenuHelper:BuildMenu(menu_id, { back_callback = "stream_mercs_save" })
 		MenuHelper:AddMenuItem(nodes["blt_options"], menu_id, "stream_mercs_menu_main")
-
 	end )
 
 	-- Load settings
@@ -79,7 +76,6 @@ if not StreamMercs then
 			asset_loader:LoadAssetGroup("n_h_light_units")
 		end
 	end
-
 end
 
 if RequiredScript == "lib/tweak_data/charactertweakdata" then
@@ -106,7 +102,5 @@ if RequiredScript == "lib/tweak_data/charactertweakdata" then
 		safe_add(char_map.mad, "ene_akan_fbi_heavy_r870")
 		safe_add(char_map.mad, "ene_akan_fbi_shield_dw_sr2_smg")
 		safe_add(char_map.mad, "ene_akan_cs_heavy_r870")
-
-		return char_map
 	end )
 end

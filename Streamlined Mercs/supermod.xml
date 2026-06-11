@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <mod name="Streamlined Mercs">
 	<hooks script_path="mod.lua">
-		<post hook_id="core/lib/managers/coreenvironmentcontrollermanager"/>
 		<post hook_id="lib/tweak_data/charactertweakdata"/>
 	</hooks>
 
@@ -20,6 +19,8 @@
 			</group>
 
 			<file :name="ene_akan_fbi_heavy_g36/ene_akan_fbi_heavy_g36.object"/>
+
+			<file :name="ene_akan_cs_tazer_ak47_ass/ene_akan_cs_tazer_ak47_ass.object"/>
 
 			<file :name="ene_akan_fbi_swat_dw_ak47_ass/ene_akan_fbi_swat_dw_ak47_ass.unit"/>
 			<file :name="ene_akan_fbi_swat_dw_ak47_ass/ene_akan_fbi_swat_dw_ak47_ass_husk.unit"/>
