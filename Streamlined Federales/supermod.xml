@@ -25,6 +25,20 @@
 					<file :name="ene_acc_tazer_policia_federale_helmet.object"/>
 				</group>
 
+				<group :name="ene_swat_cloaker_policia_federale/">
+					<group :name="debris/">
+						<file :name="ene_spook_head_debris.material_config"/>
+						<file :name="ene_spook_head_debris.model"/>
+						<file :name="ene_spook_head_debris.object"/>
+						<file :name="ene_spook_upper_body_debris.model"/>
+						<file :name="ene_spook_upper_body_debris.object"/>
+					</group>
+					<file :name="ene_swat_cloaker_policia_federale.material_config"/>
+					<file :name="ene_swat_cloaker_policia_federale.model"/>
+					<file :name="ene_swat_cloaker_policia_federale.object"/>
+					<file :name="ene_swat_cloaker_policia_federale_contour.material_config"/>
+				</group>
+
 				<group :name="ene_swat_heavy_policia_federale/">
 					<file :name="ene_swat_heavy_policia_federale.model"/>
 					<file :name="ene_swat_heavy_policia_federale.object"/>
@@ -133,6 +147,8 @@
 					<file :name="taser_body_df.texture"/>
 					<file :name="taser_helmet_df.texture"/>
 					<file :name="taser_helmet_nm.texture"/>
+					<file :name="cloaker_body_df.texture"/>
+					<file :name="cloaker_body_nm.texture"/>
 				</group>
 			</group>
 

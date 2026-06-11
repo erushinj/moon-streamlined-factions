@@ -7,16 +7,16 @@ if not StreamFederales then
 		shields_only = false,
 	}
 
-	Hooks:Add( "LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedFederales", function(loc)
+	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedFederales", function(loc)
 		loc:add_localized_strings({
 			stream_federales_menu_main = "Streamlined Federales",
 			stream_federales_menu_main_desc = "Settings require a full game restart to take effect after toggling.",
 			stream_federales_menu_shields_only = "Shields Only",
 			stream_federales_menu_shields_only_desc = "When enabled, adds only the new Policia Federal shield model. Use when playing with another mod that remodels Federales. Requires full game restart.",
 		})
-	end )
+	end)
 
-	Hooks:Add( "MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenusStreamlinedFederales", function(_, nodes)
+	Hooks:Add("MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenusStreamlinedFederales", function(_, nodes)
 		local menu_id = "stream_federales_menu"
 		MenuHelper:NewMenu(menu_id)
 
@@ -39,7 +39,7 @@ if not StreamFederales then
 
 		nodes[menu_id] = MenuHelper:BuildMenu(menu_id, { back_callback = "stream_federales_save" })
 		MenuHelper:AddMenuItem(nodes["blt_options"], menu_id, "stream_federales_menu_main")
-	end )
+	end)
 
 	-- Load settings
 	if io.file_is_readable(StreamFederales.save_path) then
@@ -97,10 +97,9 @@ if RequiredScript == "lib/tweak_data/charactertweakdata" then
 		end
 	end
 
-	Hooks:PostHook( CharacterTweakData, "character_map", "streamlined_federales_character_map", function(self)
+	Hooks:PostHook(CharacterTweakData, "character_map", "streamlined_federales_character_map", function()
 		local char_map = Hooks:GetReturn()
-
 		safe_add(char_map.bex, "ene_swat_policia_federale_fbi")
 		safe_add(char_map.bex, "ene_swat_policia_federale_fbi_r870")
-	end )
+	end)
 end

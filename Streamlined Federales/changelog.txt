@@ -1,9 +1,18 @@
-October 15, 2024 @ 17:50 UTC-6
+June 10, 2026
+- Update to match SH v4.9.9
+- Tweak Policía Federal textures
+- Changed Taser's patch to be yellow and have a unique name
+- Changed Medic's gloves to be white and slightly brightend balaclava
+- Made font between Medic, Taser and regular units consistent
+- Tweak text on Policia Federal patch
+- Add Federales Cloaker
+
+October 15, 2024
 - Update to match SH v4.8.8
 - Fix Federales Medic accent (on body texture)
 - Better future-proof SH compatibility by removing an unnecessary hook
 
-December 5, 2023 @ 00:00 UTC-6
+December 5, 2023
 - Update for U240.3
 - Update to match SH v4.8.1
 - Adjusted pouches on Federales Heavies
@@ -11,22 +20,22 @@ December 5, 2023 @ 00:00 UTC-6
 - No longer add duplicate entries to character map if they already exist
 - Shouldn't produce errors on startup when playing with Eclipse anymore
 
-July 2, 2023 @ 22:20 UTC-6
+July 2, 2023
 - Update to match SH v4.7.5
 - Add Federales Taser
 - Fix faulty heavy body armour
 - Fix Federales Medic's popped helmet orientation
 - Improve shield opacity texture
 
-April 28, 2023 @ 22:00 UTC-6
+April 28, 2023
 - Change mod priority back to 0
 - Add missing units to character map
 
-April 27, 2023 @ 10:15 UTC-6
+April 27, 2023
 - Fix a bug that caused the model changes to be disabled when using SH's GenSec faction tweaks
 - Change mod priority to -1
 
-April 26, 2023 @ 13:00 UTC-6
+April 26, 2023
 - Add Federales Medic
 - Re-fix husk units
 - Change some more back end stuff
