@@ -1,5 +1,4 @@
 if not StreamFBIs then
-
 	Global.streamlined_factions = Global.streamlined_factions or {}
 
 	StreamFBIs = ModInstance
@@ -15,7 +14,6 @@ if not StreamFBIs then
 
 		StreamFBIs:GetSuperMod():GetAssetLoader():LoadAssetGroup("main")
 	end
-
 end
 
 if RequiredScript == "lib/tweak_data/charactertweakdata" then
@@ -40,7 +38,5 @@ if RequiredScript == "lib/tweak_data/charactertweakdata" then
 		local char_map = Hooks:GetReturn()
 
 		safe_add(char_map.basic, "ene_fbi_heavy_r870")
-
-		return char_map
 	end )
 end

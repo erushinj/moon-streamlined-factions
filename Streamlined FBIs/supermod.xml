@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <mod name="Streamlined FBIs">
 	<hooks script_path="mod.lua">
-		<post hook_id="core/lib/managers/coreenvironmentcontrollermanager"/>
 		<post hook_id="lib/tweak_data/charactertweakdata"/>
 	</hooks>
 
