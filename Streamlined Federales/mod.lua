@@ -1,5 +1,4 @@
 if not StreamFederales then
-
 	Global.streamlined_factions = Global.streamlined_factions or {}
 
 	StreamFederales = ModInstance
@@ -18,7 +17,6 @@ if not StreamFederales then
 	end )
 
 	Hooks:Add( "MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenusStreamlinedFederales", function(_, nodes)
-
 		local menu_id = "stream_federales_menu"
 		MenuHelper:NewMenu(menu_id)
 
@@ -41,7 +39,6 @@ if not StreamFederales then
 
 		nodes[menu_id] = MenuHelper:BuildMenu(menu_id, { back_callback = "stream_federales_save" })
 		MenuHelper:AddMenuItem(nodes["blt_options"], menu_id, "stream_federales_menu_main")
-
 	end )
 
 	-- Load settings
@@ -80,7 +77,6 @@ if not StreamFederales then
 			asset_loader:LoadAssetGroup("not_shields_only")
 		end
 	end
-
 end
 
 if RequiredScript == "lib/tweak_data/charactertweakdata" then
@@ -106,7 +102,5 @@ if RequiredScript == "lib/tweak_data/charactertweakdata" then
 
 		safe_add(char_map.bex, "ene_swat_policia_federale_fbi")
 		safe_add(char_map.bex, "ene_swat_policia_federale_fbi_r870")
-
-		return char_map
 	end )
 end

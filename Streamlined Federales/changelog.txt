@@ -1,3 +1,8 @@
+October 15, 2024 @ 17:50 UTC-6
+- Update to match SH v4.8.8
+- Fix Federales Medic accent (on body texture)
+- Better future-proof SH compatibility by removing an unnecessary hook
+
 December 5, 2023 @ 00:00 UTC-6
 - Update for U240.3
 - Update to match SH v4.8.1
