@@ -1,15 +1,19 @@
-October 15, 2024 @ 17:55 UTC-6
+June 11, 2026
+- Update to match SH v4.9.9
+- Add Russian heavy shotgunner
+
+October 15, 2024
 - Update to match SH v4.8.8
 - Disable light on Russian Taser
 - Better future-proof SH compatibility by removing an unnecessary hook
 
-December 5, 2023 @ 00:00 UTC-6
+December 5, 2023
 - Update to match SH v4.8.1
 - Russian Heavies no longer produce a glow on the floor in front of them
 - No longer add duplicate entries to character map if they already exist
 - Shouldn't produce errors on startup when playing with Eclipse anymore
 
-April 28, 2023 @ 22:00 UTC-6
+April 28, 2023
 - Add missing units to character map
 - Clean up files a bit
 

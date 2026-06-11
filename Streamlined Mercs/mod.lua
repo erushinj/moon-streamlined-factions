@@ -7,15 +7,15 @@ if not StreamMercs then
 		n_h_light_units = true,
 	}
 
-	Hooks:Add( "LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedMercs", function(loc)
+	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInitStreamlinedMercs", function(loc)
 		loc:add_localized_strings({
 			stream_mercs_menu_main = "Streamlined Mercs",
 			stream_mercs_menu_n_h_light_units = "Change Normal/Hard Light Units",
 			stream_mercs_menu_n_h_light_units_desc = "When disabled, keeps the light and Shield units seen on Normal and Hard the same as vanilla. Use when playing with a mod that adds them to other difficulties. Requires full game restart.",
 		})
-	end )
+	end)
 
-	Hooks:Add( "MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenusStreamlinedMercs", function(_, nodes)
+	Hooks:Add("MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenusStreamlinedMercs", function(_, nodes)
 		local menu_id = "stream_mercs_menu"
 		MenuHelper:NewMenu(menu_id)
 
@@ -38,7 +38,7 @@ if not StreamMercs then
 
 		nodes[menu_id] = MenuHelper:BuildMenu(menu_id, { back_callback = "stream_mercs_save" })
 		MenuHelper:AddMenuItem(nodes["blt_options"], menu_id, "stream_mercs_menu_main")
-	end )
+	end)
 
 	-- Load settings
 	if io.file_is_readable(StreamMercs.save_path) then
@@ -96,11 +96,10 @@ if RequiredScript == "lib/tweak_data/charactertweakdata" then
 		end
 	end
 
-	Hooks:PostHook( CharacterTweakData, "character_map", "streamlined_mercs_character_map", function(self)
+	Hooks:PostHook(CharacterTweakData, "character_map", "streamlined_mercs_character_map", function()
 		local char_map = Hooks:GetReturn()
-
 		safe_add(char_map.mad, "ene_akan_fbi_heavy_r870")
 		safe_add(char_map.mad, "ene_akan_fbi_shield_dw_sr2_smg")
 		safe_add(char_map.mad, "ene_akan_cs_heavy_r870")
-	end )
+	end)
 end
