@@ -1,3 +1,9 @@
+October 15, 2024 @ 17:45 UTC-6
+- Update to match SH v4.8.8
+- Tweak GenSec Heavy models
+- Fix GenSec Shield and SMG unit LOD
+- Better future-proof SH compatibility by removing an unnecessary hook
+
 December 5, 2023 @ 00:00 UTC-6
 - Update to match SH v4.8.1
 - Slightly sharpen GenSec Shield texture

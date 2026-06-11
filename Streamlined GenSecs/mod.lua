@@ -1,5 +1,4 @@
 if not StreamGenSecs then
-
 	Global.streamlined_factions = Global.streamlined_factions or {}
 
 	StreamGenSecs = ModInstance
@@ -18,7 +17,6 @@ if not StreamGenSecs then
 	end )
 
 	Hooks:Add( "MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenusStreamlinedGenSecs", function(_, nodes)
-
 		local menu_id = "stream_gensecs_menu"
 		MenuHelper:NewMenu(menu_id)
 
@@ -41,7 +39,6 @@ if not StreamGenSecs then
 
 		nodes[menu_id] = MenuHelper:BuildMenu(menu_id, { back_callback = "stream_gensecs_save" })
 		MenuHelper:AddMenuItem(nodes["blt_options"], menu_id, "stream_gensecs_menu_main")
-
 	end )
 
 	-- Load settings
@@ -106,7 +103,5 @@ if RequiredScript == "lib/tweak_data/charactertweakdata" then
 
 		safe_add(char_map.basic, "ene_city_swat_r870")
 		safe_add(char_map.basic, "ene_city_shield")
-
-		return char_map
 	end )
 end

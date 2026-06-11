@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <mod name="Streamlined GenSecs">
 	<hooks script_path="mod.lua">
-		<post hook_id="core/lib/managers/coreenvironmentcontrollermanager"/>
 		<post hook_id="lib/tweak_data/charactertweakdata"/>
 	</hooks>
 
@@ -25,6 +24,7 @@
 
 				<file :name="ene_city_swat_1/ene_city_swat_1.model"/>
 				<file :name="ene_city_swat_2/ene_city_swat_2.model"/>
+				<file :name="ene_city_swat_3/ene_city_swat_3.model"/>
 
 				<file :name="ene_city_swat_r870/ene_city_swat_r870.unit"/>
 				<file :name="ene_city_swat_r870/ene_city_swat_r870_husk.unit"/>
