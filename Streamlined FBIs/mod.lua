@@ -34,9 +34,8 @@ if RequiredScript == "lib/tweak_data/charactertweakdata" then
 		end
 	end
 
-	Hooks:PostHook( CharacterTweakData, "character_map", "streamlined_fbis_character_map", function(self)
+	Hooks:PostHook(CharacterTweakData, "character_map", "streamlined_fbis_character_map", function()
 		local char_map = Hooks:GetReturn()
-
 		safe_add(char_map.basic, "ene_fbi_heavy_r870")
-	end )
+	end)
 end

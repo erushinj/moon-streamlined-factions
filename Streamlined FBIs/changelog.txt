@@ -1,13 +1,17 @@
-October 15, 2024 @ 17:40 UTC-6
+June 11, 2026
+- Update to match SH v4.9.9
+- Fix weighting on FBI light shotgunner model
+
+October 15, 2024
 - Update to match SH v4.8.8
 - Fix weighting on FBI Shield
 - Better future-proof SH compatibility by removing an unnecessary hook
 
-December 5, 2023 @ 00:00 UTC-6
+December 5, 2023
 - No longer add duplicate entries to character map if they already exist
 - Shouldn't produce errors on startup when playing with Eclipse anymore
 
-April 28, 2023 @ 22:00 UTC-6
+April 28, 2023
 - Add missing unit to character map
 
 March 31, 2023
